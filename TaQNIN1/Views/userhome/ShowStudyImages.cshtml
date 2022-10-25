@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "ShowStudyImages";
+}
+
+<div style="margin-top:100px" class="gallery"></div>
+
+
+<script>
+
+    //$(function () {
+    //    // Multiple images preview in browser
+    //    var imagesPreview = function (input, placeToInsertImagePreview) {
+
+    //        if (input.files) {
+    //            var filesAmount = input.files.length;
+
+    //            for (i = 0; i < filesAmount; i++) {
+    //                var reader = new FileReader();
+
+    //                reader.onload = function (event) {
+    //                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+    //                }
+
+    //                reader.readAsDataURL(input.files[i]);
+    //            }
+    //        }
+
+    //    };
+
+        function imagesPreview(input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        }
+
+        $(document).ready(function () {
+            debugger;
+           
+            sessionStorage.getItem("before", d);
+            imagesPreview(d, 'div.gallery');
+        });
+   
+
+</script>

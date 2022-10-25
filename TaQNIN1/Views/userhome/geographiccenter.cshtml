@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TaQNIN1.Models.Income_noData>
+@using GridMvc.Html
+
+
+@{
+    ViewBag.Title = "المركز الجغرافي";
+}
+<style>
+    .grid-mvc {
+        font-size: 14px;
+     width:1400px;
+        margin-left: 20px;
+        margin-top:60px;
+    }
+
+        .grid-mvc .grid-wrap table {
+            border: 1px solid #238F89;
+        }
+
+            .grid-mvc .grid-wrap table thead {
+                background: #238F89;
+                color: #fff;
+            }
+
+                .grid-mvc .grid-wrap table thead .grid-header .grid-header-title a {
+                    color: #fff;
+                }
+
+        .grid-mvc .grid-wrap .grid-footer .grid-pager ul {
+            margin-top: 10px;
+        }
+
+       
+
+            .grid-mvc .grid-wrap .grid-footer .grid-pager ul li {
+                padding: 5px 10px;
+                border: 1px solid #eee;
+                display: contents
+            }
+    .coll1{margin-right:40px;}
+
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<h2 class="text-center" style="margin-top: 120px; color: #546C66">المركز الجغرافي</h2>
+<hr />
+
+@Html.Grid(Model).Columns(columns =>
+                        {
+                            columns.Add(m => m.income_no).Titled("امر الشغل").Css("coll1 text-right");
+                            columns.Add(m => m.uploaddate).Titled("التاريخ").Css("text-right");
+                            columns.Add(m => m.ordersCount).Titled("عدد الطلبات").Css("text-right");
+                            columns.Add(m => m.insideOrdersCount).Titled("عدد الطلبات داخل اراضي ق.م").Css("text-right");
+                            columns.Add(m => m.outsideOrdersCount).Titled("عدد الطلبات خارج اراضي ق.م").Css("text-right");
+                            columns.Add().Encoded(false).Sanitized(false).SetWidth("2%").RenderValueAs(o => Html.ActionLink("الطلبات", "GeographicCenterOrders", "userhome", new { id = o.income_no }, new { @class = "btn btn-success text-capitalize text-success edit btn btn-outline-success " }));
+                            columns.Add().Encoded(false).Sanitized(false).SetWidth("15%").RenderValueAs(x => Html.ActionLink("ارسال جميع الطلبات للدراسه", "sendtostudyOrders", "userhome", new { id = x.income_no }, new { @class = " btn btn-danger text-capitalize  Delete btn btn-outline-danger" }));
+
+                        }).WithPaging(20)
+
+@*<div style="margin-left:-90px;margin-top:30px;">
+        @Html.ActionLink("رجوع", "geographiccenteruser")
+    </div>*@

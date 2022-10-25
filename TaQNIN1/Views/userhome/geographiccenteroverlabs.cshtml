@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Geographic Center Overlabs";
+}
+
+<style>
+    .showS.active{display: none}
+</style>
+
+<h2 class="text-center" style="color: #546c66; margin-top:90px">تداخلات القوات المسلحة</h2>
+<hr />
+@using (Html.BeginForm("overlabs", "userhome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+<div class="row" style="margin-top:50px">
+    <div class="form-group col-md-6" style="margin-top:30px">
+        <select class="form-control" id="type" name="type">
+            <option value="">--اختار النوع--</option>
+            <option value="داخل">داخل</option>
+            <option value="خارج">خارج</option>
+            
+        </select>
+   </div>
+
+    <div class="form-group col-md-6 " style="margin-top:30px" id="incomeno" name="incomeno">
+
+        @if (ViewBag.income != null)
+        {
+            @Html.DropDownList("income", (SelectList)ViewBag.income, "--اختار الملف --", new { @class = "form-control w-75" })
+        }
+    </div>
+</div>
+    <div class="row showS">
+
+        <div class="shpdiv" style="background-color:white">
+            <input type="file" style="margin-right:auto" name="uploadshape" id="uploadd" multiple />
+            
+        </div>
+
+    </div>
+    <br />
+    <input type="submit" value="حفظ" style="float: left" class=" btn btn-success" onclick="return check();" />
+}
+@*<div style="margin-top:30px;font-weight: bold">
+    @Html.ActionLink("رجوع", "geographiccenteruser")
+</div>*@
+<script>
+    $(document).ready(function () {
+        $('.showS').hide();
+
+    });
+    function check() {
+        debugger;
+        if ($("#type").val() == "" || $("#income").val() == "") {
+            alert("من فضلك ادخل كل البيانات")
+            return false;
+        }
+        return true;
+    
+    }
+
+    function checkupload() {
+        debugger;
+        var numFiles = $("#uploadd").get(0).files.length;
+        if (numFiles != 8) {    
+            alert("ادخل كل الملفات !");
+            return false;
+        }
+
+        return true;
+    }
+
+    $('#type').change(function () {
+        if ($(this).val() == "داخل") {
+            $('.showS').show();
+        } else {
+            $('.showS').hide();
+        }
+    });
+</script>

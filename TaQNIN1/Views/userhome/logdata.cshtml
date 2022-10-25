@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TaQNIN1.Models.LogTable>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "مراقبه اداء المستخدمين";
+}
+<style>
+
+    .gbttn {
+        background-color: orange;
+        color: white;
+    }
+
+    .table table-striped grid-table {
+        margin-left: 2000px;
+    }
+
+    .grid-mvc {
+        font-size: 14px;
+        width: 1400px;
+        /*margin-left: 100px;*/
+        margin-top: 50px;
+    }
+
+        .grid-mvc .grid-wrap table {
+            border: 1px solid #565657;
+        }
+
+            .grid-mvc .grid-wrap table thead {
+                background: #238F89;
+                color: #fff;
+            }
+
+                .grid-mvc .grid-wrap table thead .grid-header .grid-header-title a {
+                    color: #fff;
+                }
+
+        .grid-mvc .grid-wrap .grid-footer .grid-pager ul {
+            margin-top: 10px;
+        }
+
+            .grid-mvc .grid-wrap .grid-footer .grid-pager ul li {
+                padding: 5px 10px;
+                border: 1px solid #eee;
+                display: contents;
+            }
+
+    .coll1 {
+        margin-right: 40px;
+    }
+     table.grid-table .grid-header> .grid-header-title{
+            padding:8px 0;
+            font-size:16px;
+        }
+        .grid-mvc {
+    font-size: 14px;
+    /*width: 1300px;*/
+    margin-left: 1500px;
+    margin-top: 60px;
+    margin-right: -50px;
+    /* width: 50%; */
+    width: 1000px;
+}
+        .grid-mvc .grid-wrap table {
+    border: 1px solid #565657;
+    margin-right: 120px;
+}
+</style>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<h2 class="text-center" style="margin-top: 120px; color: #546C66">مراقبه اداء المستخدمين </h2>
+<hr />
+
+
+
+
+
+<div class="grrid">
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(m => m.id).Titled("المسلسل").Filterable(true).Css("text-right");
+
+    columns.Add(m => m.action).Titled("الفعل").Filterable(true).Css("text-right");
+    columns.Add(m => m.id_no).Titled("رقم الطلب").Filterable(true).Css("text-right");
+    columns.Add(m => m.userName).Titled("اسم المستخدم").Filterable(true).Css("text-right");
+
+
+    columns.Add(m => m.Date).Titled("التاريخ ").Filterable(true).Css("text-right");
+
+
+}).WithPaging(20).WithGridItemsCount("Total Orders").WithMultipleFilters()
+    @*<span style="color:#428BCA;padding-top:-300px;padding-bottom:50px"> Total Count: @ViewBag.count</span>*@
+    @*@Html.ActionLink("رجوع", "Officer")*@
+</div>

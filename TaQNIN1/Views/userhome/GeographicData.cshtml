@@ -1,0 +1,457 @@
+﻿@model TaQNIN1.Models.TaqninMetadata
+@{
+    ViewBag.Title = "GeographicData";
+}
+@using (Html.BeginForm("savedata", "userhome")) { 
+    <div class="parent" style="margin-top: 100px; background-color: #D3D3D3; height: auto;padding: 0 10px 10px">
+        @Html.HiddenFor(m => m.id)
+        <div class="child1" style="background: rgb(2,33,205);background: linear-gradient(126deg, rgba(2,33,205,1) 0%, rgba(12,31,106,1) 100%, rgba(255,255,255,0.5550595238095238) 100%);width:200px;height:30px">
+            <div class="child1" style="background: rgb(2,33,205);
+background: linear-gradient(126deg, rgba(2,33,205,1) 0%, rgba(12,31,106,1) 100%, rgba(255,255,255,0.5550595238095238) 100%);width:300px;height:30px;"><span style="color:white;padding-right:20px;font-size:18px;padding-top:20px;margin-top:20px"> دراسه مركز المتغيرات</span></div>
+        </div>
+        <div class="row" style="margin-bottom: 30px;margin-top: 10px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.income_no, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">امر الشغل</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.id_no, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">رقم الطلب</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.name, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">اسم مقدم الطلب</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.governate, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">المحافظه</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.uploaddate, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">تاريخ يوم الادخال لقواعد البيانات </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.activity, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">نوع النشاط</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> <input type="date" class="form-control" style="margin-top: 10px; border-color: #EEEEEE; " name="Previewdate" id="Previewdate" disabled/></div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">تاريخ المعاينه</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> <input type="DATE" class="form-control" style="margin-top: 10px; border-color: #EEEEEE; " name="imagedate" id="imagedate" disabled /></div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">تاريخ الصوره</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.actualarea, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">المساحه الفعليه الموجوده فى محضر المعاينه</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.area, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">المساحه المدخله</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.unit, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">وحده قياس المساحه</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.Convertedspace, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">المساحه الواقعيه</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.study_note, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">التداخل مع طلب اخر</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.tazalom, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px;margin-left:200px">التظلم</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-6 col-sm-offset-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.status, new { @class = "form-control", @readonly = "readonly" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">حاله الطلب</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-9">@Html.TextAreaFor(m => m.studynotes, new { @class = "form-control", @readonly = "readonly", rows="6" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">ملاحظات الدراسه</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-9">@Html.TextAreaFor(m => m.notes_captain, new { @class = "form-control", @readonly = "readonly", rows = "6" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">ملاحظات رئيس قسم استرداد اراضي الدوله</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+        <div class="parent1" style="margin-top: 30px; background-color: #D3D3D3; height: auto;padding: 0 10px ">
+
+            <div class="child1" style="background: rgb(2,33,205); background: linear-gradient(126deg, rgba(2,33,205,1) 0%, rgba(12,31,106,1) 100%, rgba(255,255,255,0.5550595238095238) 100%);width:300px;height:30px;"><span style="color:white;padding-right:20px;font-size:18px;padding-top:10px"> دراسه المركز الجغرافي</span></div>
+            <div class="row" style="margin-top:20px;">
+
+                <div class="col-md-6 col-sm-offset-6">
+                    <div class="row">
+                        <div class="col-md-9"> @Html.TextBoxFor(m => m.TaqninData.id_no, new { @class = "form-control", @readonly = "readonly" })</div>
+                        <div class="col-md-3">
+                            <label style="color: black; direction: rtl; margin-top: 10px">رقم الطلب</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-offset-6" style="margin-top: 30px">
+                    <div class="row">
+                        <div class="col-md-9">
+                            @Html.DropDownList("Geo_person_response", null, new { @class = "form-control",  @onchange = "showdiv();" })
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <label style="color: black; direction: rtl; margin-top: 10px">المركز الجغرافي</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+           
+                <div id="insideshow">
+
+
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+
+                                    @Html.RadioButtonFor(x => x.RaiseSurveyors, "كلي", Model.RaiseSurveyors == "كلي")@Html.Label("كلي")
+                                    @Html.RadioButtonFor(x => x.RaiseSurveyors, "جزئي", Model.RaiseSurveyors == "جزئي")@Html.Label("جزئي")
+
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size: 14px">رفع مساحي</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+
+                                    @Html.RadioButtonFor(x => x.DescionQM, "كلي", Model.AcceptOrNot == "كلي")@Html.Label("كلي")
+                                    @Html.RadioButtonFor(x => x.DescionQM, "جزئي", Model.AcceptOrNot == "جزئي")@Html.Label("جزئي")
+
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size:14px">ق.م</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    @Html.RadioButtonFor(x => x.Descion223, "كلي", Model.Descion223 == "كلي")@Html.Label("كلي")
+
+                                    @Html.RadioButtonFor(x => x.Descion223, "جزئي", Model.Descion223 == "جزئي")@Html.Label("جزئي")
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size: 14px">قرار223</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    @Html.RadioButtonFor(x => x.Overlap_after_range, "كلي", Model.Overlap_after_range == "كلي")@Html.Label("كلي")
+                                    @Html.RadioButtonFor(x => x.Overlap_after_range, "جزئي", Model.Overlap_after_range == "جزئي")@Html.Label("جزئي")
+
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size:14px">التداخل بعد النطاق</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+          
+
+            
+            @*<div class="insideshow1" hidden>
+               
+
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="RaiseSurveyors">كلي</label>
+                                    <input type="radio" id="RaiseSurveyors" name="RaiseSurveyors" value="كلي" />
+                                    <label for="RaiseSurveyors">جزئي</label>
+                                    <input type="radio" id="RaiseSurveyors" name="RaiseSurveyors" value="جزئي" />
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size: 18px">رفع مساحي</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="DescionQM1">كلي</label>
+                                    <input type="radio" id="DescionQM" name="DescionQM" value="كلي" />
+                                    <label for="DescionQM2">جزئي</label>
+                                    <input type="radio" id="DescionQM" name="DescionQM" value="جزئي" />
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size:18px">ق.م</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="DescionQM1">كلي</label>
+                                    <input type="radio" id="Descion223" name="Descion223" value="كلي" />
+                                    <label for="DescionQM2">جزئي</label>
+                                    <input type="radio" id="Descion223" name="Descion223" value="جزئي" />
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size: 18px">قرار223</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="DescionQM1">كلي</label>
+                                    <input type="radio" id="Overlap_after_range" name="Overlap_after_range" value="كلي" />
+                                    <label for="DescionQM2">جزئي</label>
+                                    <input type="radio" id="Overlap_after_range" name="Overlap_after_range" value="جزئي" />
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-size:18px">التداخل بعد النطاق</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+              
+            </div>*@
+
+               
+        <div class="row" style="margin-top:30px;">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9"> @Html.TextBoxFor(m => m.Remainingspace, new { @class = "form-control" })</div>
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px; ">المساحه المتبقيه</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" >
+                <div class="row">
+                    
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.Convertedspace, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label style="color: black; direction: rtl; margin-top: 10px">المساحه الكليه بالمتر مربع</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+            <div class="parent2" style="margin-top: 30px; background-color: #D3D3D3; height: auto">
+
+                <div class="child1" style="background: rgb(2,33,205); background: linear-gradient(126deg, rgba(2,33,205,1) 0%, rgba(12,31,106,1) 100%, rgba(255,255,255,0.5550595238095238) 100%);width:300px;height:30px;"><span style="color:white;padding-right:20px;font-size:18px;padding-top:10px"> دراسه المركز الجغرافي</span></div>
+                <div class="row" style="margin-left:600px;margin-top:20px;">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="radio" name="AcceptOrNot" value="موافق" checked />موافق
+                                <input type="radio" name="AcceptOrNot" value="غير موافق" />غير موافق
+                            </div>
+                            <div class="col-md-6">
+                                <label style="color: black; direction: rtl; margin-top: 10px">قائد المركز الجغرافي</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label style="color: black; direction: rtl; margin-top: 10px">القائم بالدراسه  مركز المعلومات الجغرافي</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+    <input type="submit" value="حفظ"  style="font-weight: bold; background-color: #D3D3D3; float: left; margin: 20px 0; width: 100px" />
+
+ }
+
+<div style="margin-left:-90px;margin-top:30px;">
+    @Html.ActionLink("رجوع", "geographiccenteruser")
+</div>
+
+
+
+   
+        <script>
+            $(document).ready(function () {
+                debugger;
+                if ($("#Geo_person_response").val() == "داخل")
+                    $("#insideshow").show();
+                else
+                    $("#insideshow").hide();
+
+                
+
+            });
+            function showdiv() {
+                debugger;
+                if ($("#Geo_person_response").val() == "داخل") {
+                    $("#insideshow").show();
+                    //$('.insideshow').css('visibility', 'visible');
+                }
+                else
+                    $("#insideshow").hide();
+
+
+            }
+
+</script>

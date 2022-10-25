@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ShapefileUpload";
+}
+
+<h2 class="text-center" style="margin-top: 120px; color: #546C66">Shapefile Upload</h2>
+<hr />
+@using (Html.BeginForm("ShapefileUpload", "userhome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    if (ViewBag.ErrorMessage!=null) { 
+    <p class="text-danger">@ViewBag.ErrorMessage</p>}
+<div class="uploadahape">
+    <div class="shpdiv1" style="margin-right: auto; margin-top:-50px">
+        <label style="" class="text-danger">shape file</label>
+        <input type="file"   name="uploadshape" id="uploadd" multiple />
+      
+
+        <input type="submit" onclick="return checkupload();" class="sucessbtn" value="رفع الملف" style="margin-top:40px;" />
+
+    </div>
+
+   
+</div>
+    
+}
+
+@*<div style="margin-left:-90px;margin-top:30px;">
+    @Html.ActionLink("Back to list", "Officer")
+</div>*@
+
+<script>
+    function checkupload() {
+        debugger;
+        var numFiles = $("#uploadd").get(0).files.length;
+        var numFiles1 = $("#uploadspoints").get(0).files.length;
+        if (numFiles < 2 || numFiles1) {
+            alert("ادخل كل الملفات !");
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+

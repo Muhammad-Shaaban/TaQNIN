@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TaQNIN1.Models.ApplicationUser>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "activateUsers";
+}
+
+<style>
+    .grid-mvc {
+        font-size: 14px;
+        width: 800px;
+        margin: 60px auto
+    }
+
+        .grid-mvc .grid-wrap table {
+            border: 1px solid #238F89;
+        }
+
+            .grid-mvc .grid-wrap table thead {
+                background: #238F89;
+                color: #fff;
+                width:30px;
+            }
+
+                .grid-mvc .grid-wrap table thead .grid-header .grid-header-title a {
+                    color: #fff;
+                }
+
+        .grid-mvc .grid-wrap .grid-footer .grid-pager ul {
+            margin-top: 10px;
+        }
+
+            .grid-mvc .grid-wrap .grid-footer .grid-pager ul li {
+                padding: 5px 10px;
+                border: 1px solid #eee;
+                display: contents;
+            }
+
+    .coll1 {
+        margin-right: 40px;
+    }
+
+    .hidicon {
+        margin-right: 1120px;
+        color: #2BAF80;
+    }
+
+    .adddata {
+        background-color: #F4511E;
+        color: white;
+    }
+            table.grid-table .grid-header> .grid-header-title{
+            padding:10px 0;
+            font-size:18px;
+        }
+
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<div class="text-center" style="margin-top: 120px; color: #546C66"></div>
+<hr />
+
+
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(m => m.UserName).Titled(" اسم المستخدم").Css("text-right");
+   
+    columns.Add(m => m.userrole).Titled("الدور").Css("text-right");
+
+    columns.Add().Encoded(false).Sanitized(false).SetWidth("2%").Css("update").RenderValueAs(o => Html.ActionLink("Accept", "Activate", new { id = o.Id, choice = 1 }, new { @class = "btn btn-success font-weight-bold  text-capitalize update" }));
+    columns.Add().Encoded(false).Sanitized(false).SetWidth("2%").RenderValueAs(o => Html.ActionLink("Reject", "Activate", new { id = o.Id, choice = 0 }, new { @class = "btn btn-danger font-weight-bold text-white text-capitalize cancel" }));
+
+
+}).WithPaging(20)

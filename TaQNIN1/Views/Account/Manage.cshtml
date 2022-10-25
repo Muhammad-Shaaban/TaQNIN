@@ -1,0 +1,33 @@
+﻿@using TaQNIN1.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+@*<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>*@
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial", new ViewDataDictionary { { "Property1", @ViewBag.username } })
+        }
+        else
+        {
+            @Html.Partial("_SetPasswordPartial")
+        }
+
+        <section id="externalLogins">
+            @Html.Action("RemoveAccountList")
+            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
+<div style="margin-left:-90px;margin-top:30px;">
+    @Html.ActionLink("رجوع", "admin", "userhome")
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

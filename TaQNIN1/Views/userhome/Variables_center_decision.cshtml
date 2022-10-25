@@ -1,0 +1,503 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<TaQNIN1.Viewmodel.StudyData>
+
+@using GridMvc.Html
+@{
+    ViewBag.Title = "قرار مركز المتغيرات";
+}
+
+<style>
+    .hiderow {
+    display:none;
+    }
+     .grid-itemscount {
+        margin-right: 30px;
+    }
+    
+      table.grid-table .grid-header> .grid-header-title{
+            padding:8px 0;
+            font-size:16px;
+        }
+        .grid-mvc {
+    font-size: 18px;
+    font-weight:bold;
+    /*width: 1300px;*/
+    margin-left: 1500px;
+    margin-top: 60px;
+    margin-right: -50px;
+    /* width: 50%; */
+    width: 1600px;
+}
+    .grid-header{
+
+        height:20%;
+   }
+        .grid-mvc .grid-wrap table {
+            border: 1px solid #565657;
+        }
+        table.grid-table .grid-header> .grid-header-title{
+            padding:8px 0;
+            font-size:16px;
+        }
+
+            .grid-mvc .grid-wrap table thead {
+                background: #238F89;
+                color: #fff;
+            }
+
+                .grid-mvc .grid-wrap table thead .grid-header .grid-header-title a {
+                    color: #fff;
+                }
+
+        .grid-mvc .grid-wrap .grid-footer .grid-pager ul {
+            margin-top: 10px;
+        }
+
+            .grid-mvc .grid-wrap .grid-footer .grid-pager ul li {
+                padding: 5px 10px;
+                border: 1px solid #eee;
+                display: contents
+            }
+
+    .coll1 {
+        margin-right: 40px;
+    }
+
+    .hidicon {
+        margin-right: 1120px;
+        color: #2BAF80;
+    }
+
+    .adddata {
+        background-color: #F4511E;
+        color: white;
+    }
+    table.grid-table {
+        /* margin: 0; */
+        margin-right: -120px !important;
+    }
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<div class="text-center" style="margin-top: 120px; color: #546C66"></div>
+<hr />
+
+<div style="border: 1px solid #EEEEEE; background-color: #F9F9F9; height: 60px; margin-top: 30px; ">
+    <input type="button" value="البحث" onclick="showdiv();" style="background-color: #1F9089; color: whitesmoke; margin-top: 10px; margin-right: 20px; " />
+    <a href="javascript:hidediv();">
+        <i class="fas fa-compress-arrows-alt hidicon" onclick="hidediv();"></i>
+    </a>
+</div>
+<div id="search">
+    @*@Html.Partial("_search", new ViewDataDictionary { { "Property1", @ViewBag.users }, { "Property2", @ViewBag.governamentlst }, { "Property3", @ViewBag.incomelst }, { "Property4", @ViewBag.Status }, { "actioname", @ViewBag.actioname } })*@
+    @using (Html.BeginForm("Variables_center_decision", "userhome", FormMethod.Post))
+    {
+
+        <div class="searchdiv" style="border: 1px solid #AAAAAA; background-color: #F5F5F5; margin-top: 30px; height: 350px; ">
+            <div class="serchdiv">
+                <div class="row">
+                    <input type="hidden" value="1" name="searchh">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-9">
+                                @Html.DropDownList("governate", (IEnumerable<SelectListItem>)ViewBag.governamentlst, "None", new { @class = "form-control", style = "margin-right:-20px;margin-top:10px" })
+
+                            </div>
+                            <div class="col-md-3">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">المحافظه</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                @*  <label for="income_no" style="color: #1F9089;direction:rtl;margin-top:10px">امر الشغل</label>*@
+
+
+                                <input list="income_nos" name="income_no" id="income_no" style="margin-top:10px" class="form-control">
+                                <datalist id="income_nos">
+
+
+                                    @foreach (var item in ViewBag.incomelst)
+                                    {
+                                        <option value="@item.Text">@item.Text</option>
+
+                                    }
+
+                                </datalist>
+
+                                @*@Html.DropDownList("income_no", ((IEnumerable<SelectListItem>)@ViewBag.), "None", new { @class = "form-control", style = "margin-top: 10px;" })*@
+
+
+
+
+                                @*    @Html.DropDownList("income_no", ((IEnumerable<SelectListItem>)ViewBag.Property3), "None", new { @class = "form-control" ,style="margin-top:10px"})*@
+
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">امر الشغل</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" style="margin-top: 15px;  border-color: #EEEEEE; " name="id_no" id="id_no" />
+
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:15px; margin-right:20px;">رقم الطلب</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="geographic_person_response" id="geographic_person_response" class="form-control" style="margin-top:10px;margin-right:-20px">
+                                    <option>None</option>
+                                    <option value="داخل">داخل</option>
+                                    <option value="خارج">خارج</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">المركز الجغرافي</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8"> <input type="text" class="form-control" style=" margin-top: 10px; border-color: #EEEEEE; " name="studentUser" id="studentUser" /></div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">اسم المستخدم لطلب اعاده الدراسه</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8"> <input type="text" class="form-control" style=" margin-top: 10px; border-color: #EEEEEE; " name="name" id="name" /></div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px;margin-right:20px">اسم مقدم الطلب</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="Descion223" id="Descion223" class="form-control" style="margin-top:10px;margin-right:-20px">
+                                    <option>None</option>
+                                    <option value="جزئي">جزئي</option>
+                                    <option value="كلي">كلي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار 223</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="DescionQM" id="DescionQM" class="form-control" style="margin-top:10px">
+                                    <option>None</option>
+                                    <option value="جزئي">جزئي</option>
+                                    <option value="كلي">كلي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار ق.م</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8"> <input type="date" class="form-control" style="margin-top: 10px; border-color: #EEEEEE; " name="responsedate" id="responsedate" /></div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px;margin-right:20px">تاريخ الرد</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="tazalom1" class="form-control" id="tazalom1" style="margin-top:10px;margin-right:-20px">
+                                    <option>None</option>
+                                    <option value="تظلم">تظلم</option>
+                                    <option value="لايوجد">لايوجد</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">التظلم</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="RaiseSurveyors" id="RaiseSurveyors" class="form-control" style="margin-top:10px">
+                                    <option>None</option>
+                                    <option value="جزئي">جزئي</option>
+                                    <option value="كلي">كلي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">رفع مساحي</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="fullfilterms" class="form-control" style="margin-top:10px;margin-right:-20px" id="fullfilterms">
+                                    <option>None</option>
+                                    <option value="جزئي">جزئي</option>
+                                    <option value="كلي">كلي</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">مستوفي للضوابط والشروط كلي/جزئي</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                @Html.DropDownList("status", ((IEnumerable<SelectListItem>)ViewBag.Status), "None", new { @class = "form-control", style = "margin-top:10px" })
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label style="color: #1F9089;direction:rtl;margin-top:10px">حاله الطلب</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select name="Delayed" class="form-control" style="margin-top:10px" id="Delayed">
+                                    <option>None</option>
+                                    <option value="مؤجله">الطلبات المؤجله</option>
+
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label style="color: #1F9089; direction: rtl; margin-top: 10px; margin-right: 20px">الطلبات المؤجله</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.AntiForgeryToken()
+            </div>
+            @Html.ActionLink("حذف البحث", "Variables_center_decision", "userhome", new { searchh = 0 }, new { @class = "btn btn-danger serchdiv", style = "margin-right:950px; margin-top:20px;" })
+
+            <input type="submit" value="بحث" class="btn btn-success" style="margin-top:20px" />
+
+        </div>
+    }
+
+
+
+
+
+
+
+
+    <script>
+        function resetdata() {
+            $('.serchdiv :input').val('');
+        }
+
+    </script>
+
+  
+ </div>
+
+<div class="container">
+@using (Ajax.BeginForm("Variables_center_decision", null, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "myGrid" }, new { income_no = "180" }))
+{ 
+ <div class="row">
+     
+        <div class="col-md-12">
+            <div class="grrid">
+               @Html.Grid(Model).Selectable(true).Columns(columns =>
+                        {
+                            columns.Add(m => m.Taqninid).Titled("المسلسل").Css("text-right");
+                            columns.Add(m => m.id_no).Titled("رقم الطلب").Css("text-right").SetWidth("200px");
+                            columns.Add(m => m.income_no).Titled("امر الشغل").Css("text-right").SetWidth("200px");
+                            columns.Add(m => m.name).Titled("اسم مقدم الطلب").Css("text-right").SetWidth("500px");
+                            columns.Add(m => m.governate).Titled("المحافظه").Css("text-right");
+
+                            columns.Add(m => m.activity).Titled("نوع النشاط").Css("text-right");
+                            columns.Add(m => m.uploaddate).Titled("تاريخ الطلب").Css("text-right");
+                            columns.Add(m => m.studentUser).Titled("اسم المستخدم للدراسه").Css("text-right");
+                            columns.Add(m => m.geographic_person_response).Titled("موقف التداخلات ق م").Css("text-right");
+                            columns.Add(m => m.ChangesCenterDescion).Titled("قرار مركز المتغيرات").Css("text-right");
+                            columns.Add(m => m.LegalFullfied).Titled("القانونيه").Css("text-right");
+                            columns.Add(m => m.responsedate).Titled("تاريخ الرد").Css("text-right");
+                            columns.Add(m => m.tazalom).Titled("التظلم").Css("text-right");
+                            columns.Add(m => m.id).Css("hiderow");
+                            columns.Add().Encoded(false).Sanitized(false).SetWidth("2%").RenderValueAs(o => Html.ActionLink("اضافه البيانات ", "studyData", "userhome", new { id = o.id }, new { @class = "adddata text-capitalize text-white btn btn-outline-success  " }));
+
+
+
+
+                        }).WithPaging(20).WithMultipleFilters()
+               
+                <span style="color:#428BCA;padding-top:-300px;padding-bottom:50px"> Total Count: @ViewBag.count</span>
+                <div id="container" style="margin-left: 20px">
+                    <p></p>
+                    <p></p>
+                    <div class="pagination" style="margin-left: 400px">
+                        @Html.PagedListPager(Model, page => Url.Action("Variables_center_decision", new { id_no = ViewBag.idnoselected, income_no = ViewBag.income_noselected, geographic_person_response = ViewBag.geographic_person_responseselected, governate = ViewBag.governateselected, studentUser = ViewBag.studentUserselected, Descion223 = ViewBag.Descion223selected, name = ViewBag.nameselected, DescionQM = ViewBag.DescionQMselected, responsedate = ViewBag.responsedateselected, tazalom1 = ViewBag.tazalomselected, RaiseSurveyors = ViewBag.RaiseSurveyorsselected, fullfilterms = ViewBag.fullfiltermsselected, status = ViewBag.statusselected, Delayed = ViewBag.Delayedselected, activity = ViewBag.activityselected, revieweruser = ViewBag.revieweruserselected, LegalFullfied = ViewBag.LegalFullfiedselected, ChangesCenterDescion1 = ViewBag.ChangesCenterDescionselected, page }))
+                    </div>
+                </div>
+
+
+                @*<span style="color:#428BCA;padding-top:-300px;padding-bottom:50px" > Total Count: @ViewBag.count</span>*@
+               
+            </div>
+        </div>
+      
+      
+       
+
+    </div>
+    
+}
+</div>
+
+
+
+
+
+
+@*<div style="margin-left:-90px;margin-top:30px;">
+    @Html.ActionLink("رجوع", "Officer")
+</div>*@
+<script>
+
+
+    $(function () {
+        debugger;
+        var tr = $('.grid-mvc').find('tr');
+        tr.bind('click', function (event) {
+            var tr = $('.grid-mvc').find('tr');
+            tr.bind('click', function (event) {
+                debugger;
+                var values = '';
+                var tds = $(this).find('td');
+
+                var xx = $(this).find(".hiderow").html();
+                window.location.href = '@Url.Action("studyData", "userhome")?id=' + xx;
+
+            });
+        });
+    });
+  
+   
+
+    $(document).ready(function () {
+       
+
+
+  $("#search").hide();
+        $("#searchh").val(0);
+        //alert();
+        debugger;
+        $("#id_no").val('@ViewBag.idnoselected');
+
+        $("#income_no").val('@ViewBag.income_noselected');
+        $("#income_no option").each(function () {
+            debugger;
+            if ($(this).text() == '@ViewBag.income_noselected') {
+                $(this).attr('selected', 'selected');
+            }
+
+        });
+        $("#name").val('@ViewBag.nameselected');
+        $("#studentUser").val('@ViewBag.studentUserselected');
+        $("#responsedate").val('@ViewBag.responsedateselected');
+        $("#DescionQM option[value='@ViewBag.DescionQMselected']").attr('selected', 'selected');
+        $("#geographic_person_response option[value='@ViewBag.geographic_person_responseselected']").attr('selected', 'selected');
+        $("#DescionQM option[value='@ViewBag.DescionQMselected']").attr('selected', 'selected');
+        $("#income_no option[value='@ViewBag.income_noselected']").attr('selected', 'selected');
+        $("#Descion223 option[value='@ViewBag.Descion223selected']").attr('selected', 'selected');
+        $("#tazalom option[value='@ViewBag.tazalomselected']").attr('selected', 'selected');
+        $("#fullfilterms option[value='@ViewBag.fullfiltermsselected']").attr('selected', 'selected');
+        @*$("#status option[value='@ViewBag.statusselected']").attr('selected', 'selected');*@
+        $("#Delayed option[value='@ViewBag.Delayedselected']").attr('selected', 'selected');
+        $("#RaiseSurveyors option[value='@ViewBag.RaiseSurveyorsselected']").attr('selected', 'selected');
+        $("#activity option[value='@ViewBag.activityselected']").attr('selected', 'selected');
+        $("#revieweruser option[value='@ViewBag.revieweruserselected']").attr('selected', 'selected');
+        $("#LegalFullfied option[value='@ViewBag.LegalFullfiedselected']").attr('selected', 'selected');
+        $("#ChangesCenterDescion option[value='@ViewBag.ChangesCenterDescionselected']").attr('selected', 'selected');
+
+        @*var z= '@ViewBag.governateselected';*@
+        if ('@ViewBag.governateselected' == "") {
+            $("#governate option[value='None']").attr('selected', 'selected');
+        }
+        else
+            $("#governate option[value='@ViewBag.governateselected']").attr('selected', 'selected');
+        $("#status option").each(function () {
+            debugger;
+            if ($(this).text() == '@ViewBag.statusselected') {
+                $(this).attr('selected', 'selected');
+            }
+
+
+        });
+
+        $("#governate option").each(function () {
+            debugger;
+            if ($(this).text() == '@ViewBag.governateselected') {
+                $(this).attr('selected', 'selected');
+            }
+
+
+        });
+
+        $("#tazalom1 option").each(function () {
+            debugger;
+            if ($(this).text() == '@ViewBag.tazalomselected') {
+                $(this).attr('selected', 'selected');
+            }
+
+
+        });
+
+    });
+    function hidediv() {
+        debugger;
+
+        $("#search").hide();
+        $("#searchh").val(0);
+    }
+    function showdiv() {
+        debugger;
+
+        $("#search").show();
+    }
+
+</script>

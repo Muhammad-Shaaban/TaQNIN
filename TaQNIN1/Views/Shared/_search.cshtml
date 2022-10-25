@@ -1,0 +1,238 @@
+﻿@using (Html.BeginForm("Variables_center_decision", "userhome", FormMethod.Post))
+{
+
+    <div class="searchdiv" style="border: 1px solid #AAAAAA; background-color: #F5F5F5; margin-top: 30px; height: 350px; ">
+        <div class="serchdiv">
+            <div class="row">
+                <input type="hidden" value="1" name="searchh">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-9">
+                            @Html.DropDownList("governate", (IEnumerable<SelectListItem>)ViewBag.Property2, "None", new { @class = "form-control" ,style="margin-right:-20px;margin-top:10px"})
+
+                        </div>
+                        <div class="col-md-3">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">المحافظه</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                          @*  <label for="income_no" style="color: #1F9089;direction:rtl;margin-top:10px">امر الشغل</label>*@
+                            
+
+                               <input list="income_nos" name="income_no" id="income_no" style="margin-top:10px" class="form-control">
+                                <datalist id="income_nos">
+               
+
+                                    @foreach (var item in ViewBag.Property3)
+                                        {
+                                            <option value="@item.Text">@item.Text</option>
+
+                                        }
+
+                                </datalist>
+
+                            @*@Html.DropDownList("income_no", ((IEnumerable<SelectListItem>)@ViewBag.), "None", new { @class = "form-control", style = "margin-top: 10px;" })*@
+
+
+
+                           
+                         @*    @Html.DropDownList("income_no", ((IEnumerable<SelectListItem>)ViewBag.Property3), "None", new { @class = "form-control" ,style="margin-top:10px"})*@
+
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">امر الشغل</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" style="margin-top: 15px;  border-color: #EEEEEE; " name="id_no" id="id_no" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:15px; margin-right:20px;">رقم الطلب</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="geographic_person_response" id="geographic_person_response" class="form-control" style="margin-top:10px;margin-right:-20px">
+                                <option>None</option>
+                                <option value="داخل">داخل</option>
+                                <option value="خارج">خارج</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">المركز الجغرافي</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8"> <input type="text" class="form-control" style=" margin-top: 10px; border-color: #EEEEEE; " name="studentUser" id="studentUser" /></div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">اسم المستخدم لطلب اعاده الدراسه</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8"> <input type="text" class="form-control" style=" margin-top: 10px; border-color: #EEEEEE; " name="name" id="name" /></div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px;margin-right:20px">اسم مقدم الطلب</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="Descion223" id="Descion223" class="form-control" style="margin-top:10px;margin-right:-20px">
+                                <option>None</option>
+                                <option value="جزئي">جزئي</option>
+                                <option value="كلي">كلي</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار 223</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="DescionQM" id="DescionQM" class="form-control" style="margin-top:10px">
+                                <option>None</option>
+                                <option value="جزئي">جزئي</option>
+                                <option value="كلي">كلي</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار ق.م</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8"> <input type="date" class="form-control" style="margin-top: 10px; border-color: #EEEEEE; " name="responsedate" id="responsedate" /></div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px;margin-right:20px">تاريخ الرد</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="tazalom1" class="form-control" id="tazalom1" style="margin-top:10px;margin-right:-20px">
+                                <option>None</option>
+                                <option value="تظلم">تظلم</option>
+                                <option value="لايوجد">لايوجد</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">التظلم</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="RaiseSurveyors" id="RaiseSurveyors" class="form-control" style="margin-top:10px">
+                                <option>None</option>
+                                <option value="جزئي">جزئي</option>
+                                <option value="كلي">كلي</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">رفع مساحي</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="fullfilterms" class="form-control" style="margin-top:10px;margin-right:-20px" id="fullfilterms">
+                                <option>None</option>
+                                <option value="جزئي">جزئي</option>
+                                <option value="كلي">كلي</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">مستوفي للضوابط والشروط كلي/جزئي</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        
+                            <div class="col-md-8">
+                                @Html.DropDownList("status", ((IEnumerable<SelectListItem>)ViewBag.Property4), "None", new { @class = "form-control",style="margin-top:10px" })
+                            </div>
+
+                        
+                        <div class="col-md-4">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">حاله الطلب</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select name="Delayed" class="form-control" style="margin-top:10px" id="Delayed">
+                                <option>None</option>
+                                <option value="مؤجله">الطلبات المؤجله</option>
+
+                            </select>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: #1F9089; direction: rtl; margin-top: 10px; margin-right: 20px">الطلبات المؤجله</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+        </div>
+        @Html.ActionLink("حذف البحث", "Variables_center_decision", "userhome", new { searchh = 0 }, new { @class = "btn btn-danger serchdiv", style = "margin-right:950px; margin-top:20px;" })
+
+        <input type="submit" value="بحث" class="btn btn-success" style="margin-top:20px" />
+
+    </div>
+}
+    
+        
+        
+        
+        
+   
+
+
+<script>
+    function resetdata() {
+        $('.serchdiv :input').val('');
+    }
+
+</script>
+

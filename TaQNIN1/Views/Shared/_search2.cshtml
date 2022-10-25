@@ -1,0 +1,266 @@
+﻿@using (Html.BeginForm((string)ViewBag.actioname, "userhome", FormMethod.Post))
+{
+
+    <div class="searchdiv" style=" border: 1px solid #eeeeee; margin-top: 30px; height: 300px">
+    <div class="serchdiv">
+        <div class="row">
+            <input type="hidden" value="1" name="searchh">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.DropDownList("governate", (IEnumerable<SelectListItem>)ViewBag.Property2, "None", new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">المحافظه</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.DropDownList("income_no", ((IEnumerable<SelectListItem>)ViewBag.Property3),"None", new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">امر الشغل</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" style="margin-top: 10px;  border-color: #EEEEEE; " name="id_no" id="id_no" />
+
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">رقم الطلب</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.DropDownList("geographic_person_response", ((IEnumerable<SelectListItem>)ViewBag.Property6), "None", new { @class = "form-control" })
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">اسم المستخدم القائم بالدراسه</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6"> 
+                        @Html.DropDownList("activity", ((IEnumerable<SelectListItem>)ViewBag.Property5), "None", new { @class = "form-control" })
+                  
+                    <div class="col-md-6">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">نوع النشاط</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6"> <input type="text" class="form-control" style=" margin-top: 10px; border-color: #EEEEEE; " name="name" id="name" /></div>
+                    <div class="col-md-6">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">اسم مقدم الطلب</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+        <div class="row">
+
+          
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6"> @Html.DropDownList("revieweruser", ((IEnumerable<SelectListItem>)@ViewBag.Property7), "None", new { @class = "form-control" })</div>
+                    <div class="col-md-6">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">اسم المستخدم المراجع</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <select name="geographic_person_response" class="form-control">
+                            <option>None</option>
+                            <option value="داخل">داخل</option>
+                            <option value="خارج">خارج</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">المركز الجغرافي</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="tazalom" class="form-control">
+                             <option>None</option>
+                            <option value="مستوفي">مستوفي</option>
+                              <option value="غيرمستوفي">غير مستوفي</option>
+                            <option value="غيرمدقق">غير مدقق</option>
+                           </select>
+                     </div>
+                    <div class="col-md-6">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار مركز المتغيرات</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <select name="Delayed" class="form-control">
+                            <option>None</option>
+                            <option value="مؤجله">الطلبات المؤجله</option>
+
+                        </select>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">الطلبات المؤجله</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.DropDownList("LegalFullfied", ((IEnumerable<SelectListItem>)ViewBag.Property8), "None", new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">القانونيه</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <select name="tazalom" class="form-control">
+                                <option>None</option>
+                                <option value="تظلم">تظلم</option>
+                                <option value="لايوجد">لا يوجد</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="color: #1F9089;direction:rtl;margin-top:10px">التظلم</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <select name="Descion223" class="form-control">
+                            <option>None</option>
+                            <option value="جزئي">جزئي</option>
+                            <option value="كلي">كلي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار 223</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <select name="DescionQM" class="form-control">
+                            <option>None</option>
+                            <option value="جزئي">جزئي</option>
+                            <option value="كلي">كلي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">قرار ق.م</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <select name="RaiseSurveyors" class="form-control">
+                            <option>None</option>
+                            <option value="جزئي">جزئي</option>
+                            <option value="كلي">كلي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">رفع مساحي</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="fullfilterms" class="form-control">
+                            <option>None</option>
+                            <option value="جزئي">جزئي</option>
+                            <option value="كلي">كلي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">مستوفي للضوابط والشروط كلي/جزئي</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="col-md-6">
+                            @Html.DropDownList("status", ((IEnumerable<SelectListItem>)ViewBag.Property4), "None", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color: #1F9089;direction:rtl;margin-top:10px">حاله الطلب</label>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+                @Html.AntiForgeryToken()
+            </div>
+        <input type="reset" value="حذف البحث" class="btn btn-danger" onclick="resetdata();" />
+         <input type="submit" value="بحث" class="btn btn-success" />
+        
+        
+        
+        
+    </div>
+
+}
+<script>
+    function resetdata() {
+        $('.serchdiv :input').val('');
+    }
+
+</script>
+

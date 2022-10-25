@@ -1,0 +1,22 @@
+﻿@model TaQNIN1.Models.TaqninMetadata
+
+@{
+    ViewBag.Title = "الصور بعد القانون";
+}
+<div style="padding-top:60px">
+    @if (Model.ImageAfterCounter == 0)
+    {
+        <p style="font-size:18px; font-weight:bold;">"لا يوجد صور بعد القانون"</p>
+    }
+    else
+    {
+
+        for (int i = 0; i < Model.ImageAfterCounter; i++)
+        {
+            <img style="margin-top:20px;margin-right:400px;" src='@Url.Action("ShowImages", "userhome", new { id = Model.Taqninid, counter = i, type = "After", incomeno=Model.TaqninData.income_no  })' />
+        <br />
+
+        }
+    }
+
+</div>

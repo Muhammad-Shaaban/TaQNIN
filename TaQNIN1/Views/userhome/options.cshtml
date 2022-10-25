@@ -1,0 +1,179 @@
+﻿@{
+    ViewBag.Title = "Options";
+    Layout = "~/Views/Shared/_layout2.cshtml";
+}
+<style>
+
+    #loading-pane {
+        display: none;
+        opacity: 0.8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: alpha(opacity=80);
+        -moz-opacity: 0.8;
+        z-index: 999998;
+        background-color: #ffffff;
+    }
+
+        #loading-pane img {
+            position: absolute;
+            top: 40%;
+            left: 47%;
+            z-index: 999999;
+        }
+</style>
+
+
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+<link href="~/Content/sweetalert2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="sweetalert2.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+<img src="~/img/heaader1.PNG" style="height: 70px; width:1865px; margin-bottom: 30px;margin-top:50px;" />
+<img src="~/img/header1.PNG" style="height: 70px; width:1865px; margin-bottom: 30px;margin-top:-10px" />
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="container">
+    <div class="row" style="margin-bottom: 30px;margin-top: 10px">
+
+        <div class="col-md-3">
+            <button class="btn btn-info" name="sendcaporders" value="ارسال الطلبات من النقيب" id="sendcaporders" onclick="return sendcaporders();">ارسال الطلبات من النقيب</button>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-info" name="sendpoineerorders" value="ارسال الطلبات من الرائد" id="sendpoineerders" onclick="return sendpoineerders();">ارسال الطلبات من الرائد</button>
+
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-info" name="export data" value="ExportData" id="ExportData" onclick="return backup();">Export Archive  Data</button>
+
+        </div>
+
+        <div class="col-md-3">
+            <button class="btn btn-info" name="export data1" value="ExportData1" id="ExportData1" onclick="return backupdb();">Export  Data</button>
+
+        </div>
+    </div>
+</div>
+   <div id="loading-pane">
+
+       <img src="~/img/Spinner-3.gif" />
+      
+</div>
+
+
+<script>
+    function sendcaporders() {
+        $('#loading-pane').show();
+        $.ajax({
+
+            type: "post",
+            url: '@Url.Action("captianfunct", "userhome")',
+
+            success: function (result) {
+                debugger;
+                $('#loading-pane').hide();
+                if (result.success == true) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: result.message,
+
+                    })
+
+
+                    return true;
+                }
+            }
+
+        });
+
+
+    }
+
+
+    function sendpoineerders() {
+        $('#loading-pane').show();
+        $.ajax({
+
+            type: "post",
+            url: '@Url.Action("sendpoineerorders", "userhome")',
+
+            success: function (result) {
+                debugger;
+                $('#loading-pane').hide();
+                if (result.success == true) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: result.message,
+
+                    })
+
+
+                    return true;
+                }
+            }
+
+        });
+
+
+    }
+
+    function backup() {
+        $('#loading-pane').show();
+        $.ajax({
+
+            type: "post",
+            url: '@Url.Action("updatemdbdataallajax", "userhome")',
+
+            success: function (result) {
+                debugger;
+                $('#loading-pane').hide();
+                if (result.success == true) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: result.message,
+
+                    })
+
+
+                    return true;
+                }
+            }
+
+        });
+
+
+    }
+    
+    function backupdb() {
+        $('#loading-pane').show();
+        $.ajax({
+
+            type: "post",
+            url: '@Url.Action("backupdbdata", "userhome")',
+
+            success: function (result) {
+                debugger;
+                $('#loading-pane').hide();
+                if (result.success == true) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: result.message,
+
+                    })
+
+
+                    return true;
+                }
+            }
+
+        });
+
+
+    }
+</script>

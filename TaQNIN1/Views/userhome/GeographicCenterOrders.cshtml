@@ -1,0 +1,139 @@
+﻿@model IEnumerable<TaQNIN1.Viewmodel.systemdata>
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "GeographicCenterOrders";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+
+<style>
+    .grid-mvc {
+        font-size: 14px;
+        width: 1400px;
+        margin-left: 1500px;
+        margin-top: 60px;
+    }
+
+        .grid-mvc .grid-wrap table {
+            border: 1px solid #238F89;
+        }
+
+            .grid-mvc .grid-wrap table thead {
+                background: #238F89;
+                color: #fff;
+            }
+
+                .grid-mvc .grid-wrap table thead .grid-header .grid-header-title a {
+                    color: #fff;
+                }
+
+        .grid-mvc .grid-wrap .grid-footer .grid-pager ul {
+            margin-top: 10px;
+        }
+
+            .grid-mvc .grid-wrap .grid-footer .grid-pager ul li {
+                padding: 5px 10px;
+                border: 1px solid #eee;
+                display: contents;
+            }
+
+    .coll1 {
+        margin-right: 40px;
+    }
+
+    .hidicon {
+        margin-right: 1120px;
+        color: #2BAF80;
+    }
+
+    .adddata {
+        background-color: #F4511E;
+        color: white;
+    }
+
+  
+      table.grid-table .grid-header> .grid-header-title{
+            padding:8px 0;
+            font-size:16px;
+        }
+        .grid-mvc {
+    font-size: 14px;
+    /*width: 1300px;*/
+    margin-left: 1500px;
+    margin-top: 60px;
+    margin-right: -50px;
+    /* width: 50%; */
+    width: 1000px;
+}
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<div class="text-center" style="margin-top: 120px; color: #546C66"></div>
+<hr />
+
+<div style="border: 1px solid #EEEEEE; background-color: #F9F9F9; height: 60px; margin-top: 30px; ">
+    <input type="button" value="البحث" onclick="showdiv();" style="background-color: #1F9089; color: whitesmoke; margin-top: 10px; margin-right: 20px; " />
+    <a href="javascript:hidediv();">
+        <i class="fas fa-compress-arrows-alt hidicon" onclick="hidediv();"></i>
+    </a>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grrid">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@Html.Grid(Model).Columns(columns =>
+{
+
+    columns.Add(m => m.id_no).Titled("رقم الطلب").Css("text-right");
+    columns.Add(m => m.income_no).Titled("امر الشغل").Css("text-right");
+    columns.Add(m => m.governate).Titled("المحافظه").Css("text-right");
+
+    columns.Add(m => m.name).Titled("اسم مقدم الطلب").Css("text-right");
+    columns.Add(m => m.activity).Titled("نوع النشاط").Css("text-right");
+    columns.Add(m => m.uploaddate).Titled("تاريخ الطلب").Css("text-right");
+   
+    columns.Add(m => m.LegalFullfied).Titled("القانونيه").Css("text-right");
+    columns.Add().Encoded(false).Sanitized(false).SetWidth("2%").RenderValueAs(o => Html.ActionLink("اضافه البيانات ", "GeographicData", "userhome", new { id = o.id }, new { @class = "adddata text-capitalize text-white btn btn-outline-success  " }));
+
+
+}).WithPaging(20)
+
+
+@*<div style="margin-left:-90px;margin-top:30px;">
+        @Html.ActionLink("رجوع", "Officer")
+    </div>*@
+<script>
+    $(document).ready(function () {
+        $("#search").hide();
+    });
+    function hidediv() {
+        debugger;
+
+        $("#search").hide();
+    }
+    function showdiv() {
+        debugger;
+
+        $("#search").show();
+    }
+
+</script>
+<script>
+    function resetdata() {
+        $('.serchdiv :input').val('');
+    }
+
+</script>
