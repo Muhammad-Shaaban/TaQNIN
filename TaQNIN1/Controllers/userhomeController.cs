@@ -3362,39 +3362,6 @@ namespace TaQNIN1.Controllers
         public List<exceldatadb> searchexcel(string id_no, string income_no, string geographic_person_response, string governate, string studentUser, string Descion223, string name, string DescionQM, string responsedate, string tazalom,
           string RaiseSurveyors, string fullfilterms, string status, string Delayed, string activity, string revieweruser, string LegalFullfied, string ChangesCenterDescion)
         {
-
-
-            //var param_1 = geographic_person_response == "None" ? "" : geographic_person_response;
-            //var param_2 = Descion223 == "None" ? "" : Descion223;
-            //var param_3 = DescionQM == "None" ? "" : DescionQM;
-            //var param_4 = responsedate == null ? "" : responsedate;
-            //var param_5 = tazalom == "None" ? "" : tazalom;
-            //var param_6 = RaiseSurveyors == "None" ? "" : RaiseSurveyors;
-            //var param_7 = fullfilterms == "None" ? "" : fullfilterms;
-            //var param_8 = Delayed == "None" ? "" : Delayed;
-            //var param_9 = ChangesCenterDescion == "None" ? "" : ChangesCenterDescion;
-
-            //var lst = db.Database.SqlQuery<ProcedureData>("EXECUTE  [dbo].[SearchinDB]  @id_no,@income_no ,@geographic_person_response,@governate ,@studentUser ,@Descion223,@name,@DescionQM,@responsedate,@tazalom,@RaiseSurveyors,@fullfilterms,@status,@Delayed,@activity,@LegalFullfied,@ChangesCenterDescion",
-            //    new SqlParameter("@id_no", id_no),
-            //    new SqlParameter("@income_no", income_no),
-            //    new SqlParameter("@geographic_person_response", param_1),
-            //    new SqlParameter("@governate", governate),
-            //    new SqlParameter("@studentUser", studentUser),
-            //    new SqlParameter("@Descion223", param_2),
-            //    new SqlParameter("@name", name),
-            //    new SqlParameter("@DescionQM", param_3),
-            //    new SqlParameter("@responsedate", param_4),
-            //    new SqlParameter("@tazalom", param_5),
-            //    new SqlParameter("@RaiseSurveyors", param_6),
-            //    new SqlParameter("@fullfilterms", param_7),
-            //    new SqlParameter("@status", status),
-            //    new SqlParameter("@Delayed", param_8),
-            //    new SqlParameter("@activity", activity),
-            //    new SqlParameter("@LegalFullfied", LegalFullfied),
-            //    new SqlParameter("@ChangesCenterDescion", param_9)
-            //    ).ToList();
-
-            //return lst;
             var param_1 = geographic_person_response == "None" || geographic_person_response == null ? "" : geographic_person_response;
             var param_2 = Descion223 == "None" || Descion223 == null ? "" : Descion223;
             var param_3 = DescionQM == "None" || DescionQM == null ? "" : DescionQM;
